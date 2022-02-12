@@ -1,0 +1,156 @@
+@mixin shadow($effect: 0 13px 27px -5px rgba(50, 50, 93, 0.25)) {
+  box-shadow: 0 8px 16px -8px rgba(0, 0, 0, 0.3), 0 -6px 16px -6px rgba(0, 0, 0, 0.025),
+    $effect /* 0 13px 27px -5px rgba(50, 50, 93, 0.25) */;
+}
+@mixin textAlign($align: center) {
+  //flex-end, flex-end ..
+  padding: 0.3em;
+  white-space: break-spaces;
+  display: flex;
+  align-items: center;
+  justify-content: $align;
+}
+@mixin flexcol($align: nowrap) {
+  display: flex;
+  flex-flow: column $align;
+}
+@mixin flexrow($align: nowrap) {
+  display: flex;
+  flex-flow: row $align;
+}
+@mixin center {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  text-align: center;
+  @content;
+}
+@mixin box-badge($bgClr, $fontClr: white, $lineClr: transparent, $fontSize: auto) {
+  position: relative;
+  @include center();
+  font-size: 0.9em;
+  height: 1.3em;
+  border-radius: 2px;
+  color: $fontClr;
+  background-color: $bgClr;
+  border: 1px solid $lineClr;
+}
+@mixin edtbox($align: center) {
+  padding: 2px;
+  border: 1px solid rgb(207, 207, 207);
+  background-color: rgb(237, 237, 237);
+  text-align: $align;
+  font-size: 1.1em;
+}
+@mixin circle-stt($bgClr, $nSize: 15px, $fontClr: white, $nW: $nSize, $nradius: 50%) {
+  position: relative;
+  @include circle-badge($bgClr, $nSize, $fontClr, $nW, $nradius);
+  box-shadow: 0 0 1px 1px #e6e6e68a, inset 0 0 6px -2px #000000c7;
+}
+@mixin circle-badge($bgClr, $nSize: 15px, $fontClr: white, $nW: $nSize, $nradius: 50%) {
+  @include center();
+  margin: 0 2px;
+  color: $fontClr;
+  border-radius: $nradius;
+  font-size: ($nSize * 0.8);
+  line-height: 1;
+  text-indent: 0;
+  height: $nSize;
+  width: $nW;
+  background-color: $bgClr;
+}
+@mixin helpstyle() {
+  width: fit-content;
+  height: fit-content;
+  position: absolute;
+  margin: 10px;
+  padding: 10px;
+  border: solid 1px darkgray;
+  border-radius: 5px;
+  background: #ffffd5;
+  white-space: pre-line;
+}
+@mixin darkHov($nW) {
+  box-shadow: $nW 0 0 0 rgba(199, 205, 207, 0.678) inset;
+}
+@mixin topSticky($ypos, $zindex: 2) {
+  position: sticky;
+  top: $ypos;
+  z-index: $zindex;
+}
+@mixin headrowborderstyle(
+  $nwidth: 2px,
+  $bagClr: rgb(213, 213, 213),
+  $lineStyle: solid,
+  $lineClr: $focusColor
+) {
+  border: $lineClr $lineStyle; //rgb(6, 86, 240) solid;
+  border-width: $nwidth 0;
+  background-color: $bagClr; //#f2f2f2;
+}
+@mixin userSelect($type) {
+  //none auto text contain all  none
+  -moz-user-select: $type;
+  -webkit-user-select: $type;
+  -ms-user-select: $type;
+  user-select: $type;
+}
+@mixin makeunselectable($cursor: pointer) {
+  cursor: $cursor;
+  @include userSelect(none);
+}
+@mixin rotate($deg) {
+  -ms-transform: rotate($deg); // IE 9 이상에서 사용
+  -webkit-transform: rotate($deg); // 사파리, 크롬, 오페라 브라우저 사용
+  transform: rotate($deg);
+}
+@mixin blinking($sec: 1s) {
+  -webkit-animation: blink $sec ease-in-out infinite alternate;
+  -moz-animation: blink $sec ease-in-out infinite alternate;
+  animation: blink $sec ease-in-out infinite alternate;
+}
+@mixin focus-outline {
+  outline-style: auto;
+  outline-color: $focusColor;
+  background-color: rgb(255, 255, 255); //, 0.7);
+}
+@mixin screenlock($fontColor: red, $bg1: #444444a9, $bg2: #888) {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  //background: content-box radial-gradient(#ffffffa1, gray);
+  background: repeating-linear-gradient(45deg, $bg1, $bg1 7px, $bg2 0, $bg2 9px);
+  font-size: 3em;
+  color: $fontColor;
+  z-index: 200;
+  @include userSelect(none);
+}
+
+@-webkit-keyframes blink {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@-moz-keyframes blink {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes blink {
+  0% {
+    opacity: 0.1;
+  }
+  100% {
+    opacity: 1;
+  }
+}

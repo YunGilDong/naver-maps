@@ -1,0 +1,86 @@
+/* The switch - the box around the slider */
+.switch {
+  position: relative;
+  display: inline-block;
+  $gap: 1px;
+  width: 100%;
+  height: 100%;
+
+  /* Hide default HTML checkbox */
+  input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  /* The slider */
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: 0.3s;
+    transition: 0.3s;
+  }
+
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: calc(100% - (#{$gap} * 2)); //26px;
+    width: calc(50% - (#{$gap})); //26px;
+    left: $gap;
+    bottom: $gap;
+    background-color: white;
+    -webkit-transition: 0.3s;
+    transition: 0.3s;
+  }
+
+  input:checked + .slider {
+    background-color: $focusColor; //#2196f3;
+  }
+
+  input:focus + .slider {
+    box-shadow: 0 0 1px $focusColor; // #2196f3;
+  }
+
+  input:checked + .slider:before {
+    -webkit-transform: translate(
+      100%
+    ); //X(calc(#{$nWidth}/ 2 - #{$gap})); //26px);
+    -ms-transform: translate(100%); //X(calc(#{$nWidth}/ 2 - #{$gap})); //26px);
+    transform: translate(100%); //X(calc(#{$nWidth}/ 2 - #{$gap})); //26px);
+  }
+
+  /* Rounded sliders */
+  .slider.round {
+    border-radius: 25% / 50%; //34px;
+  }
+
+  .slider.round:before {
+    border-radius: 50%;
+  }
+}
+
+.ctrl-btn {
+  font-size: 1em;
+  padding: 2px 8px;
+  //border: 1px #404755 solid;
+  //border-radius: 2px;
+  background-color: $mainbgColor; //rgb(248, 255, 255);
+  text-align: center;
+  @include makeunselectable();
+  color: white; // #404755;
+  transition: all 0.9s, color 1s;
+  &:hover {
+    color: lightcyan;
+    background-color: $focusColor; //#404755;
+  }
+  &:active {
+    position: relative;
+    top: 1px;
+  }
+  margin-left: 3px;
+  width: 100%;
+}

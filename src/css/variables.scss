@@ -1,0 +1,28 @@
+$mainbgColor: rgb(36, 40, 52); //(0, 6, 15);
+$focusColor: #3a6afd; //cornflowerblue; // #2196f3;
+$fontColor: #2196f3;
+$selColor: rgb(207, 232, 252); //rgba(181, 207, 255, 0.273);
+$fontSize: 12px;
+$bodyfontsize: 11px;
+$greenColor: #9afa0a; //rgb(136, 255, 0);
+$grayColor: #a0a0a0;
+$flashColor: #fff235;
+$lightoffColor: #363636;
+$manualColor: #597579;
+$conflicColor: #cc0000;
+$comerrColor: red;
+$doorColor: #cc00b1;
+$activeColor: #00fff3;
+$nonactiveColor: #008d62;
+$scuColor: rgb(238, 102, 121);
+
+$pickerColor: rgb(250, 232, 71);
+$titleColor: #dedede;
+
+$headerHeight: 4em;
+$Thembg: rgb(242, 242, 242);
+
+:export {
+  focusColor: $focusColor;
+  navHeadH: $headerHeight;
+}

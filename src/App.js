@@ -1,7 +1,7 @@
-import React from "react"
-import MainIndex from './components/mainview/mainindex'
+import React from "react";
+import MainIndex from './components/mainview/mainindex';
 import "./css/App.css";
-import './css/style.scss'
+import './css/style.scss';
 
 class App extends React.Component {
   constructor(props){

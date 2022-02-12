@@ -10,6 +10,8 @@
     "@testing-library/user-event": "^13.5.0",
     "axios": "^0.20.0",
     "clsx": "^1.1.1",
+    "deck.gl": "^8.4.20",
+    "mapbox-gl": "^2.7.0",
     "node-sass": "^7.0.1",
     "qs": "^6.10.1",
     "react": "^17.0.2",

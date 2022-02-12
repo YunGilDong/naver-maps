@@ -1,4 +1,5 @@
 import React from "react";
+import MapView from './mapview';
 //import '../../css/layout.scss';
 
 
@@ -18,7 +19,7 @@ class MainIndex extends React.Component {
                 </div>
 
                 <div className="basic-body">
-                        map view
+                    <MapView />
                 </div>
 
                 <div className="basic-Fbottom" style={{height:"26px"}}>

@@ -33,7 +33,8 @@ class DeckglMap extends React.PureComponent {
 
     render() {
 
-        //console.log('this.state.viewport:',this.state.viewport)
+        // console.log('this.props.layers:', this.props.layers);
+        // console.log("this.props.mapUrl:", this.props.mapUrl);
         return (
             <DeckGL 
                 initialViewState={this.props.viewport} 
@@ -41,8 +42,12 @@ class DeckglMap extends React.PureComponent {
                 layers={this.props.layers} 
                 //getCursor={() => 'url(/static/cursor20_26.png), auto'}            // custom cursor
                 //getCursor={({isDragging}) => isDragging ? 'grabbing' : 'grab'}      // default cursor
-                getCursor={({isDragging}) => this.props.isHover ? 'url(/static/cursor20_26.png), auto' : isDragging ? 'grabbing' : 'grab'}
+                //getCursor={({isDragging}) => this.props.isHover ? 'url(/static/cursor20_26.png), auto' : isDragging ? 'grabbing' : 'grab'}
                 onViewStateChange={this.onViewpostChange}
+                // getTooltip={() => ({
+                //     text: 'Testing tooltip text'
+                //   })}
+                getTooltip={this.props.getTooltip}
                 >
                 
                 <MapGL
@@ -50,6 +55,7 @@ class DeckglMap extends React.PureComponent {
                 width="100%"
                 height="100%"
                 mapStyle={this.props.mapUrl}
+                mapboxAccessToken="pk.eyJ1IjoieXVuZ2lsZG9uZyIsImEiOiJja2RvbmJwcTEwbXJ3MnF0djZ3MzhrNDk2In0.lly8uow9TWthO3ZRHWwi9Q"
                 />
 
             </DeckGL>
@@ -66,6 +72,7 @@ DeckglMap.propTypes = {
     viewport: PropTypes.object.isRequired,  
     onViewpostChange: PropTypes.func.isRequired,
     isHover: PropTypes.bool,
+    getTooltip: null, 
 }
 
 export default DeckglMap;
